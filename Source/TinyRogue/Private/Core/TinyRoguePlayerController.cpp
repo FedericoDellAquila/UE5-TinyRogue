@@ -8,3 +8,10 @@ ATinyRoguePlayerController::ATinyRoguePlayerController()
 	CheatClass = UTinyRogueCheatManager::StaticClass();
 	InputStateMachine = CreateDefaultSubobject<UStateMachineComponent>(TEXT("InputStateMachine"));
 }
+
+bool ATinyRoguePlayerController::SetPause(bool bPause, FCanUnpause CanUnpauseDelegate)
+{
+	OnGamePausedDelegate.Broadcast(bPause);
+	
+	return Super::SetPause(bPause, CanUnpauseDelegate);
+}

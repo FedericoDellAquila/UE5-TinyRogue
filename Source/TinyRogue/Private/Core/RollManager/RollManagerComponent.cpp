@@ -10,7 +10,7 @@ UPhysicsWorldSimulationManager* URollManagerComponent::GetPhysicsWorldSimulation
 	return PhysicsWorldSimulationManager;
 }
 
-void URollManagerComponent::ReproduceRollSimulation_Implementation(const TArray<int32>& DiceValues)
+void URollManagerComponent::ExecuteRollSimulation_Implementation(const TArray<int32>& DiceValues)
 {
 }
 

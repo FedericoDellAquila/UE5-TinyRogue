@@ -31,6 +31,18 @@ void ATinyRogueGameMode::InitGame(const FString& MapName, const FString& Options
 	CLOG_FATAL(IsValid(TimeTracker) == false, "TimeTracker is nullptr.");
 
 	DungeonLevelManager->Initialize();
+}
+
+void ATinyRogueGameMode::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+
+	PostInitGame();
+}
+
+bool ATinyRogueGameMode::SetPause(APlayerController* PC, FCanUnpause CanUnpauseDelegate)
+{
 	
-	OnInitGame(MapName, Options, ErrorMessage);
+	
+	return Super::SetPause(PC, CanUnpauseDelegate);
 }

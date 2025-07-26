@@ -143,8 +143,7 @@ TArray<FPhysicsSimulationData> UPhysicsWorldSimulationManager::PerformPhysicsSim
 	}
 
 	SetUpPhysicsSimulationFrame(PhysicsSimulationParameters);
-
-
+	
 	FPhysScene* PhysicsScene {SimulationWorld->GetPhysicsScene()};
 	bool bAllPhysicsActorsAtRest {false};
 	int32 StepsCount {0};

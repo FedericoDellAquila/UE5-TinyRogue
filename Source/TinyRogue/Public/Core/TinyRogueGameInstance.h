@@ -9,8 +9,7 @@ class TINYROGUE_API UTinyRogueGameInstance : public UGameInstance
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable, Category="TinyRogueGameInstance|Seed")
-	void GenerateRandomSeed();
+	virtual void Init() override;
 	
 	UFUNCTION(BlueprintCallable, BlueprintPure="true", Category="TinyRogueGameInstance|Seed")
 	const FRandomStream& GetSeed() const { return Seed; }

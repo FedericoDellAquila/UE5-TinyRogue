@@ -16,6 +16,8 @@ class TINYROGUE_API ATinyRogueGameMode : public AGameModeBase
 
 protected:
 	virtual void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage) override;
+	virtual void PostInitializeComponents() override;
+	virtual bool SetPause(APlayerController* PC, FCanUnpause CanUnpauseDelegate = FCanUnpause()) override;
 
 public:
 	ATinyRogueGameMode();
@@ -34,5 +36,5 @@ public:
 	
 protected:
 	UFUNCTION(BlueprintImplementableEvent, Category="TinyRogueGameMode")
-	void OnInitGame(const FString& MapName, const FString& Options, const FString& ErrorMessage);
+	void PostInitGame();
 };

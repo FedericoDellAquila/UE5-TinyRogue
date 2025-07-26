@@ -16,6 +16,10 @@ public:
 	 * @param Values A space-separated string containing numerical values to simulate dice rolls.
 	 *               Non-numeric entries are disregarded.
 	 */
-	UFUNCTION(BlueprintCallable, Category = "TinyRogue|CheatManager")
-	void SimulateDiceRoll(const TArray<FString>& Values);
+	void RollDice(const TArray<FString>& Values) const;
+
+	/**
+	 * Returns the current Game seed.
+	 */
+	void PrintSeed() const;
 };

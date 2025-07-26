@@ -17,7 +17,7 @@ public:
 	TArray<FPhysicsSimulationData> SimulateRoll(const int32 NumDice);
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	void ReproduceRollSimulation(const TArray<int32>& DiceValues);
+	void ExecuteRollSimulation(const TArray<int32>& DiceValues);
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	UPhysicsWorldSimulationManager* GetPhysicsWorldSimulationManager();
