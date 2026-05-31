@@ -16,20 +16,40 @@ AActor* UActorUtilityFunctionLibrary::CloneActorToWorld(AActor* SourceActor, UWo
 {
 	if (IsValid(SourceActor) == false)
 	{
+		LOG_ERROR("SourceActor is invalid.")
 		return nullptr;
 	}
 
 	if (IsValid(TargetWorld) == false)
 	{
-		TargetWorld = GetWorldFromObject(SourceActor);
+		LOG_ERROR("TargetWorld is invalid.")
+		return nullptr;
 	}
 
 	FActorSpawnParameters SpawnParams;
 	SpawnParams.Template = SourceActor;
 	SpawnParams.Owner = SourceActor->GetOwner();
 	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-	SpawnParams.Name = MakeUniqueObjectName(TargetWorld, SourceActor->GetClass(), NAME_None, EUniqueObjectNameOptions::GloballyUnique);
+	SpawnParams.Name = MakeUniqueObjectName(TargetWorld, SourceActor->GetClass(), FName{SourceActor->GetName()}, EUniqueObjectNameOptions::GloballyUnique);
 	return TargetWorld->SpawnActor<AActor>(SourceActor->GetClass(), SpawnParams);
+}
+
+AActor* UActorUtilityFunctionLibrary::CloneActor(AActor* SourceActor)
+{
+	if (IsValid(SourceActor) == false)
+	{
+		LOG_ERROR("SourceActor is invalid.")
+		return nullptr;
+	}
+
+	UWorld* TargetWorld {GetWorldFromObject(SourceActor)};
+	if (IsValid(TargetWorld) == false)
+	{
+		LOG_ERROR("TargetWorld is invalid.")
+		return nullptr;
+	}
+	
+	return CloneActorToWorld(SourceActor, TargetWorld);
 }
 
 UObject* UActorUtilityFunctionLibrary::UObjectSpawnActor(UObject* WorldContextObject, const TSubclassOf<AActor> Class, const FTransform Transform)

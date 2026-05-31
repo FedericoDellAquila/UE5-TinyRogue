@@ -60,11 +60,24 @@ TArray<AActor*> UPhysicsWorldSimulationManager::CopyStaticActors(TArray<AActor*>
 {
 	if (InStaticActors.Num() == 0)
 		return {};
-
+	
 	TArray<AActor*> Clones;
 	Clones.Reserve(InStaticActors.Num());
 	for (AActor* Actor : InStaticActors)
+	{
+		if (IsValid(Actor) == false)
+		{
+			LOG_ERROR("Actor is invalid.")
+			continue;
+		}
+		
+		if (Actor->IsRootComponentStatic() == false)
+		{
+			LOG_WARNING("{0} was not copied since mobility is not `{1}`.", GetNameSafe(Actor), UENUM_TO_STRING(EComponentMobility::Static))
+			continue;
+		}
 		DuplicateActor(Actor, Clones, GET_FUNCTION_NAME_CHECKED(UPhysicsWorldSimulationManager, OnStaticActorDestroyed));
+	}
 
 	StaticActors.Append(Clones);
 
@@ -79,7 +92,20 @@ TArray<AActor*> UPhysicsWorldSimulationManager::CopyPhysicsActors(TArray<AActor*
 	TArray<AActor*> Clones;
 	Clones.Reserve(InPhysicsActors.Num());
 	for (AActor* Actor : InPhysicsActors)
+	{
+		if (IsValid(Actor) == false)
+		{
+			LOG_ERROR("Actor is invalid.")
+			continue;
+		}
+		
+		if (Actor->IsRootComponentMovable() == false)
+		{
+			LOG_WARNING("{0} was not copied since mobility is not `{1}`.", GetNameSafe(Actor), UENUM_TO_STRING(EComponentMobility::Movable))
+			continue;
+		}
 		DuplicateActor(Actor, Clones, GET_FUNCTION_NAME_CHECKED(UPhysicsWorldSimulationManager, OnPhysicsActorDestroyed));
+	}
 
 	PhysicsActors.Append(Clones);
 

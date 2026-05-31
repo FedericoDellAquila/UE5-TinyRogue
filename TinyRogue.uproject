@@ -1,27 +1,27 @@
 {
-  "FileVersion": 3,
-  "EngineAssociation": "5.3",
-  "Category": "",
-  "Description": "",
-  "Modules": [
-    {
-      "Name": "TinyRogue",
-      "Type": "Runtime",
-      "LoadingPhase": "Default"
-    },
-    {
-      "Name": "TinyRogueEditor",
-      "Type": "Editor",
-      "LoadingPhase": "Default"
-    }
-  ],
-  "Plugins": [
-    {
-      "Name": "ModelingToolsEditorMode",
-      "Enabled": true,
-      "TargetAllowList": [
-        "Editor"
-      ]
-    }
-  ]
+	"FileVersion": 3,
+	"EngineAssociation": "5.7",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "TinyRogue",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "TinyRogueEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		}
+	]
 }

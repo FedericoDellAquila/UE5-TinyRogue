@@ -45,6 +45,9 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category="ActorUtilityFunctionLibrary")
 	static AActor* CloneActorToWorld(AActor* SourceActor, UWorld* TargetWorld);
+	
+	UFUNCTION(BlueprintCallable, Category="ActorUtilityFunctionLibrary")
+	static AActor* CloneActor(AActor* SourceActor);
 
 	UFUNCTION(BlueprintCallable, Category="ActorUtilityFunctionLibrary", DisplayName="UObject Spawn Actor", meta=(WorldContext="WorldContextObject",
 		DefaultToSelf="WorldContextObject", DeterminesOutputType="Class", DynamicOutputParam="ReturnValue"))
